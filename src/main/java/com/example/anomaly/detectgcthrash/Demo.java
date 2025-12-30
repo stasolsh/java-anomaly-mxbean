@@ -1,5 +1,9 @@
 package com.example.anomaly.detectgcthrash;
 
+/**
+ * If GC time in the last minute is high (e.g., > 20% of time)
+ * OR heap usage stays > 85%, raise an anomaly.
+ */
 public class Demo {
     public static void main(String[] args) throws Exception {
         var probe = new GcAnomalyProbe();

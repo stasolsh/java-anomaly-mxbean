@@ -20,7 +20,8 @@ public final class GcAnomalyProbe {
             long heapMax,
             double gcCpuRatio,
             double heapUsedRatio
-    ) {}
+    ) {
+    }
 
     public GcSnapshot sample() {
         long nowUptime = runtime.getUptime();
