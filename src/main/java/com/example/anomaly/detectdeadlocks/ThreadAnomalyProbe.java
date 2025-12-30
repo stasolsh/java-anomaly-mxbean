@@ -3,6 +3,8 @@ package com.example.anomaly.detectdeadlocks;
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;
 import java.lang.management.ThreadMXBean;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class ThreadAnomalyProbe {
     private final ThreadMXBean threads = ManagementFactory.getThreadMXBean();
@@ -21,11 +23,11 @@ public final class ThreadAnomalyProbe {
         return threads.findDeadlockedThreads();
     }
 
-    public void printTopBlockedThreads(int topN) {
+    public void printTopBlockedThreads(long topN) {
         long[] ids = threads.getAllThreadIds();
         ThreadInfo[] infos = threads.getThreadInfo(ids, Integer.MAX_VALUE);
 
-        java.util.List<ThreadInfo> list = new java.util.ArrayList<>();
+        List<ThreadInfo> list = new ArrayList<>();
         for (ThreadInfo ti : infos) if (ti != null) list.add(ti);
 
         list.sort((a, b) -> Long.compare(b.getBlockedTime(), a.getBlockedTime()));
