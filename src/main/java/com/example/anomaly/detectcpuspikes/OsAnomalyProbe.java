@@ -6,10 +6,6 @@ import java.lang.management.ManagementFactory;
 import java.lang.management.OperatingSystemMXBean;
 
 public final class OsAnomalyProbe {
-
-    public record OsSnapshot(double processCpuLoad, double systemCpuLoad, long openFds, long maxFds) {
-    }
-
     // Get it once; it’s effectively a singleton bean.
     private static final OperatingSystemMXBean BASE = ManagementFactory.getOperatingSystemMXBean();
 
