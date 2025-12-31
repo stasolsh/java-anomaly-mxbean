@@ -12,17 +12,6 @@ public final class GcAnomalyProbe {
     private long lastGcTimeMs = totalGcTimeMs();
     private long lastGcCount = totalGcCount();
 
-    public record GcSnapshot(
-            long intervalMs,
-            long gcTimeMs,
-            long gcCount,
-            long heapUsed,
-            long heapMax,
-            double gcCpuRatio,
-            double heapUsedRatio
-    ) {
-    }
-
     public GcSnapshot sample() {
         long nowUptime = runtime.getUptime();
         long nowGcTime = totalGcTimeMs();
